@@ -42,7 +42,7 @@ if __name__=="__main__":
 
     for i in range(sci_image.shape[0]):
         if not (sci_image[i] == pil_image[i]).all():
-            print(i)
+            print("{} vs {} at, i={}".format(sci_image[i], pil_image[i], i))
 
     if np.array_equal(sci_image, pil_image):
         print("ravny")
