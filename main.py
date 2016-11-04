@@ -11,8 +11,9 @@ if __name__=="__main__":
     start = timeit.timeit()
 
     sci_image = scipy.ndimage.imread("hd.jpg")
-    #sci_image = np.fliplr(sci_image)
-    sci_image = scipy.ndimage.interpolation.rotate(sci_image, 180)
+    sci_image = np.fliplr(sci_image)
+    #sci_image = scipy.ndimage.interpolation.rotate(sci_image, 180)
+    sci_image = scipy.ndimage.rotate(sci_image, 180, reshape=False)
 
     width, height, bytes_per_pix = sci_image.shape
     sci_image = np.reshape(sci_image, (width * height, bytes_per_pix))
@@ -26,7 +27,7 @@ if __name__=="__main__":
     start = timeit.timeit()
 
     pil_image = Image.open("hd.jpg")
-    #pil_image = pil_image.transpose(Image.FLIP_LEFT_RIGHT)
+    pil_image = pil_image.transpose(Image.FLIP_LEFT_RIGHT)
     pil_image = pil_image.rotate(180)
     #toimage(img).show()
     #print(np.array(img))
