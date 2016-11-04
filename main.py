@@ -11,7 +11,7 @@ if __name__=="__main__":
     start = timeit.timeit()
 
     sci_image = scipy.ndimage.imread("hd.jpg")
-    sci_image = np.fliplr(sci_image)
+    #sci_image = np.fliplr(sci_image)
     sci_image = scipy.ndimage.interpolation.rotate(sci_image, 180)
 
     width, height, bytes_per_pix = sci_image.shape
@@ -26,8 +26,8 @@ if __name__=="__main__":
     start = timeit.timeit()
 
     pil_image = Image.open("hd.jpg")
-    pil_image = pil_image.transpose(Image.FLIP_LEFT_RIGHT).rotate(180)
-
+    #pil_image = pil_image.transpose(Image.FLIP_LEFT_RIGHT)
+    pil_image = pil_image.rotate(180)
     #toimage(img).show()
     #print(np.array(img))
 
@@ -44,7 +44,7 @@ if __name__=="__main__":
         if not (sci_image[i] == pil_image[i]).all():
             print(i)
 
-    if np.array_equal(image, pimgage):
+    if np.array_equal(sci_image, pil_image):
         print("ravny")
 
 
