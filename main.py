@@ -9,12 +9,12 @@ if __name__=="__main__":
     print("scipy ndimage")
     start = timeit.timeit()
     simage = scipy.ndimage.imread("hd.jpg")
-    print(simage)
+    #print(simage)
     width, height, bytes_per_pix = simage.shape
     image = np.reshape(simage, (width * height, bytes_per_pix))
     end = timeit.timeit()
     print(end-start)
-
+    print(image)
     # toimage(simage).show()
 
     #print(image.data)
@@ -23,10 +23,13 @@ if __name__=="__main__":
     start = timeit.timeit()
     img = Image.open("hd.jpg")
     #toimage(img).show()
-    print(np.array(img))
-    #pimgage = np.array(list(img.getdata()), np.uint8)
+    #print(np.array(img))
+    pimgage = np.array(list(img.getdata()), np.uint8)
     end = timeit.timeit()
     print(end - start)
-    #print(pimgage)
+    print(pimgage)
+
+    if np.array_equal(image, pimgage):
+        print("ravny")
 
 
